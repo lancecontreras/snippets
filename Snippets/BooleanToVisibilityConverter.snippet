@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+      <Title>bvcon</Title>
+      <Author>[USERNAME]</Author>
+      <Description>
+      </Description>
+      <HelpUrl>
+      </HelpUrl>
+      <Shortcut>bvcon</Shortcut>
+    </Header>
+    <Snippet>
+      <Code Language="csharp" Delimiter="$"><![CDATA[  using System;
+  using Windows.UI.Xaml;
+  using Windows.UI.Xaml.Data;
+
+  public class BooleanToVisibilityConverter : IValueConverter
+  {
+    public object Convert(object value, Type targetType, object parameter, string language)
+    {
+      if (value is bool boolValue)
+      {
+        if (parameter != null && (parameter.ToString().ToLower().Equals("reverse") || parameter.ToString().ToLower().Equals("r")))
+          return boolValue ? Visibility.Collapsed : Visibility.Visible;
+
+        return boolValue ? Visibility.Visible : Visibility.Collapsed;
+      }
+      return Visibility.Collapsed;
+    }
+
+    public object ConvertBack(object value, Type targetType, object parameter, string language)
+    {
+      if (value is Visibility visibilityValue)
+      {
+        if (parameter != null && (parameter.ToString().ToLower().Equals("reverse") || parameter.ToString().ToLower().Equals("r")))
+          return Visibility.Collapsed == visibilityValue;
+
+        return Visibility.Visible == visibilityValue;
+      }
+      return false;
+    }
+  }]]></Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

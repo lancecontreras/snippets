@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+      <Title>Singleton</Title>
+      <Author>
+      </Author>
+      <Description>
+      </Description>
+      <HelpUrl>
+      </HelpUrl>
+      <Shortcut>singleton</Shortcut>
+    </Header>
+    <Snippet>
+      <Declarations>
+        <Literal Editable="true">
+          <ID>className</ID>
+          <ToolTip>className</ToolTip>
+          <Default>className</Default>
+          <Function>
+          </Function>
+        </Literal>
+      </Declarations>
+      <Code Language="cpp" Delimiter="$"><![CDATA[public sealed class $className$
+{
+   #region Singleton
+   private static volatile $className$ instance;
+   private static object syncRoot = new object();
+
+   private $className$() {}
+
+   public static $className$ Instance
+   {
+      get 
+      {
+         if (instance == null) 
+         {
+            lock (syncRoot) 
+            {
+               if (instance == null) 
+                  instance = new $className$();
+            }
+         }
+         return instance;
+      }
+   }
+   #endregion Singleton
+}]]></Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

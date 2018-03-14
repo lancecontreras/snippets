@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+        <SnippetType>Expansion</SnippetType>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+      <Title>
+      </Title>
+      <Author>
+      </Author>
+      <Description>
+      </Description>
+      <HelpUrl>
+      </HelpUrl>
+      <Shortcut>arc</Shortcut>
+    </Header>
+    <Snippet>
+      <Code Language="cpp" Delimiter="$"><![CDATA[using System.Windows.Input;
+using System.Threading.Tasks;
+
+public class AsyncRelayCommand : ICommand
+{
+    private readonly Action _execute;
+    protected Func<bool> _canExecuteFunction;
+
+
+    protected bool _canExecute = true;
+    public event EventHandler CanExecuteChanged;
+
+    readonly Func<Task> _commandAsync;
+
+    public AsyncRelayCommand(Func<Task> commandAsync, Func<bool> canExecute = null)
+    {
+        _commandAsync = commandAsync;
+        _canExecuteFunction = canExecute; 
+    }
+
+    public async Task ExecuteAsync(object parameter)
+    {
+        Disable();
+        await _commandAsync();
+        Enable();
+    }
+
+    public async void Execute(object parameter)
+    {
+        await ExecuteAsync(parameter);
+    }
+
+    public bool CanExecute(object parameter)
+    {
+        throw new NotImplementedException();
+    }
+
+    protected void Enable()
+    {
+        _canExecute = true;
+        CanExecuteChanged?.Invoke(this, null);
+    }
+
+    protected void Disable()
+    {
+        _canExecute = false;
+        CanExecuteChanged?.Invoke(this, null);
+    }
+}]]></Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>
