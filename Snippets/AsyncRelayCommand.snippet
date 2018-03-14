@@ -25,11 +25,8 @@ public class AsyncRelayCommand : ICommand
 {
     private readonly Action _execute;
     protected Func<bool> _canExecuteFunction;
-
-
     protected bool _canExecute = true;
     public event EventHandler CanExecuteChanged;
-
     readonly Func<Task> _commandAsync;
 
     public AsyncRelayCommand(Func<Task> commandAsync, Func<bool> canExecute = null)
@@ -52,7 +49,7 @@ public class AsyncRelayCommand : ICommand
 
     public bool CanExecute(object parameter)
     {
-        throw new NotImplementedException();
+        return _canExecute ? _canExecuteFunction == null ? true : _canExecuteFunction() : _canExecute;
     }
 
     protected void Enable()

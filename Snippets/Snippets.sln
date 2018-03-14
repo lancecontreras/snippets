@@ -3,6 +3,23 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{5A701EF4-02DF-4BD3-BE0F-92430FF337F0}"
+	ProjectSection(SolutionItems) = preProject
+		AsyncRelayCommand.snippet = AsyncRelayCommand.snippet
+		BooleanToVisibilityConverter.snippet = BooleanToVisibilityConverter.snippet
+		ICommandProperty.snippet = ICommandProperty.snippet
+		IDisposable.snippet = IDisposable.snippet
+		ifnetfxcore.snippet = ifnetfxcore.snippet
+		IfNetfxCoreElse.snippet = IfNetfxCoreElse.snippet
+		ModelVMProperty.snippet = ModelVMProperty.snippet
+		RelayCommand.snippet = RelayCommand.snippet
+		RelayCommandClass.snippet = RelayCommandClass.snippet
+		Singleton.snippet = Singleton.snippet
+		ViewModelBase.snippet = ViewModelBase.snippet
+		ViewModelProperty.snippet = ViewModelProperty.snippet
+		ViewModelProperty2.snippet = ViewModelProperty2.snippet
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
